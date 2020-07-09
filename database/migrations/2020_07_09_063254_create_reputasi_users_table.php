@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoteTanyaTable extends Migration
+class CreateReputasiUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateVoteTanyaTable extends Migration
      */
     public function up()
     {
-        Schema::create('vote_tanya', function (Blueprint $table) {
+        Schema::create('reputasi_users', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('pertanyaan_id')->constrained('pertanyaan');
-            $table->smallInteger('value');
+            $table->integer('nilai');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateVoteTanyaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vote_tanya');
+        Schema::dropIfExists('reputasi_users');
     }
 }
